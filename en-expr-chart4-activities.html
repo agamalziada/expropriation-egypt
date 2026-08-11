@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Expanding the Definition of "Public Utility": From 7 to 27 Activities</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #BA7517;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.07em;color:var(--gray);margin-bottom:2px;text-transform:uppercase;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:600;line-height:1.35;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #BA7517;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.55;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  .cv{font-size:clamp(17px,5vw,24px);font-weight:800;line-height:1.1;}
+  .cl{font-size:clamp(9px,2.2vw,10px);margin-bottom:3px;line-height:1.3;}
+  .cu{font-size:clamp(9px,2vw,10px);margin-top:2px;}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">Zawia3 &middot; Chart 4 of 7</p>
+    <p class="title">Expanding the Definition of "Public Utility": From 7 to 27 Activities</p>
+    <p class="subtitle">Law No. 10 of 1990 — 36 years of incremental expansion</p>
+  </div>
+  <div class="callout">"In 36 years, the grounds for forced acquisition tripled — and 11 additions came by cabinet decree, not legislation."</div>
+  
+<div class="cards" style="margin-bottom:14px">
+  <div class="card" style="background:#f1efe8;text-align:center">
+    <p class="cl" style="color:#5f5e5a">Original law (1990)</p>
+    <p class="cv" style="color:#888780">7</p>
+    <p class="cu" style="color:#888780">activities</p>
+  </div>
+  <div class="card" style="background:#fdf6e8;text-align:center">
+    <p class="cl" style="color:#7A4D00">Today</p>
+    <p class="cv" style="color:#BA7517">27</p>
+    <p class="cu" style="color:#888780">permitted activities</p>
+  </div>
+  <div class="card" style="background:#faece7;text-align:center">
+    <p class="cl" style="color:#993C1D">By cabinet decree</p>
+    <p class="cv" style="color:#D85A30">11&times;</p>
+    <p class="cu" style="color:#888780">additions via PM order</p>
+  </div>
+</div>
+<div style="background:#f1efe8;border-radius:8px;padding:clamp(10px,3vw,13px)">
+  <p style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a;margin-bottom:8px">Sources of expansion in grounds for forced acquisition</p>
+  <div style="display:flex;flex-direction:column;gap:7px">
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+        <span style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a">Original law</span>
+        <span style="font-size:clamp(10px,2.5vw,11px);font-weight:700;color:#888780">7</span>
+      </div>
+      <div style="height:18px;background:#e0ddd6;border-radius:3px;overflow:hidden">
+        <div id="b1" style="height:100%;width:0;background:#888780;border-radius:3px;transition:width 1s ease"></div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+        <span style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a">Added by other laws</span>
+        <span style="font-size:clamp(10px,2.5vw,11px);font-weight:700;color:#BA7517">9</span>
+      </div>
+      <div style="height:18px;background:#e0ddd6;border-radius:3px;overflow:hidden">
+        <div id="b2" style="height:100%;width:0;background:#BA7517;border-radius:3px;transition:width 1.2s ease"></div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+        <span style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a">Added by PM decrees</span>
+        <span style="font-size:clamp(10px,2.5vw,11px);font-weight:700;color:#D85A30">11</span>
+      </div>
+      <div style="height:18px;background:#e0ddd6;border-radius:3px;overflow:hidden">
+        <div id="b3" style="height:100%;width:0;background:#D85A30;border-radius:3px;transition:width 1.4s ease"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  setTimeout(function(){
+    document.getElementById("b1").style.width=(7/27*100)+"%";
+    document.getElementById("b2").style.width=(9/27*100)+"%";
+    document.getElementById("b3").style.width=(11/27*100)+"%";
+  },200);
+})();
+</script>
+  <p class="source">Source: Al-Umran Observatory policy paper — June 2026</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>

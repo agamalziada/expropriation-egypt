@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How Long Does a Compensation Case Take in Court?</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #D85A30;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.07em;color:var(--gray);margin-bottom:2px;text-transform:uppercase;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:600;line-height:1.35;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.55;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  .cv{font-size:clamp(17px,5vw,24px);font-weight:800;line-height:1.1;}
+  .cl{font-size:clamp(9px,2.2vw,10px);margin-bottom:3px;line-height:1.3;}
+  .cu{font-size:clamp(9px,2vw,10px);margin-top:2px;}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">Zawia3 &middot; Chart 5 of 7</p>
+    <p class="title">How Long Does a Compensation Case Take in Court?</p>
+    <p class="subtitle">From filing to final Court of Cassation ruling</p>
+  </div>
+  <div class="callout">"A case filed in 2004 did not receive a final ruling until June 2026 — 22 years in a single journey."</div>
+  
+<div style="position:relative;width:100%;height:clamp(210px,55vw,250px)"><canvas id="c"></canvas></div>
+<div style="margin-top:12px;background:#faece7;border-left:3px solid #D85A30;padding:9px 12px;border-radius:0 6px 6px 0">
+  <p style="font-size:clamp(10px,2.5vw,11px);color:#993C1D;font-weight:700;margin-bottom:2px">Proposed reform</p>
+  <p style="font-size:clamp(11px,2.8vw,12px);color:#5f5e5a">Maximum <strong style="color:#D85A30">12 months</strong> for urgent cases — vs. a reality stretching two decades</p>
+</div>
+<script>
+(function(){
+  var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+  var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+  var coral=dk?"#F0997B":"#D85A30",blue=dk?"#85B7EB":"#378ADD",
+      amber=dk?"#FAC775":"#BA7517",teal=dk?"#5DCAA5":"#1D9E75";
+  var labels=[["Expert appointment","(trial court)"],["Full process","(trial→cassation)"],["Case 2009","→ ruling 2024"],["Case 2004","→ ruling 2026"],["Proposed","reform"]];
+  var data=[2,6.5,15,22,1];
+  var colors=[blue,amber,coral,coral,teal];
+  new Chart(document.getElementById("c"),{
+    type:"bar",
+    data:{labels:labels,datasets:[{data:data,backgroundColor:colors,borderWidth:0,borderRadius:5}]},
+    options:{
+      indexAxis:"y",responsive:true,maintainAspectRatio:false,
+      animation:{duration:1000,easing:"easeOutQuart",delay:function(c){return c.dataIndex*80;}},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,callbacks:{label:function(c){if(c.dataIndex===4)return "12 months (proposed)";return c.raw+(c.dataIndex===0?" years":" years");}}}},
+      scales:{
+        x:{ticks:{color:tc,font:{size:10},callback:function(v){return v===1?"12m":v+"yr";}},grid:{color:gc},border:{display:false}},
+        y:{ticks:{color:tc,font:{size:9}},grid:{display:false},border:{display:false}}
+      }
+    }
+  });
+})();
+</script>
+  <p class="source">Source: Ibrahim Nayer, Court of Cassation attorney / Court of Cassation rulings</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>

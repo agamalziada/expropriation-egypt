@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Human Toll by Governorate: Most Displaced Citizens</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #D85A30;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.07em;color:var(--gray);margin-bottom:2px;text-transform:uppercase;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:600;line-height:1.35;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #D85A30;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.55;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  .cv{font-size:clamp(17px,5vw,24px);font-weight:800;line-height:1.1;}
+  .cl{font-size:clamp(9px,2.2vw,10px);margin-bottom:3px;line-height:1.3;}
+  .cu{font-size:clamp(9px,2vw,10px);margin-top:2px;}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">Zawia3 &middot; Chart 3 of 7</p>
+    <p class="title">Human Toll by Governorate: Most Displaced Citizens</p>
+    <p class="subtitle">Cairo and Giza lead in people displaced — Matrouh leads in land</p>
+  </div>
+  <div class="callout">"Cairo: 201,639 displaced; Giza: 157,476 — while Matrouh recorded the largest land area seized at 49,939 feddans."</div>
+  
+<div style="position:relative;width:100%;height:clamp(185px,48vw,215px)"><canvas id="c1"></canvas></div>
+<div style="margin-top:12px;background:#f1efe8;border-radius:8px;padding:clamp(9px,2.5vw,12px)">
+  <p style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a;margin-bottom:6px">Land area seized (feddans) — highest governorate</p>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div style="flex:1;height:22px;background:#e0ddd6;border-radius:4px;overflow:hidden">
+      <div id="mbar" style="height:100%;width:0;background:#BA7517;border-radius:4px;transition:width 1.3s ease;display:flex;align-items:center;padding-left:8px">
+        <span style="font-size:10px;font-weight:700;color:#fff;white-space:nowrap">49,939 feddans</span>
+      </div>
+    </div>
+    <span style="font-size:clamp(11px,2.8vw,13px);font-weight:700;color:#BA7517;white-space:nowrap">Matrouh</span>
+  </div>
+</div>
+<script>
+(function(){
+  var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+  var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+  var coral=dk?"#F0997B":"#D85A30",blue=dk?"#85B7EB":"#378ADD";
+  new Chart(document.getElementById("c1"),{
+    type:"bar",
+    data:{
+      labels:["Cairo","Giza"],
+      datasets:[{data:[201639,157476],backgroundColor:[coral,blue],borderWidth:0,borderRadius:6}]
+    },
+    options:{
+      indexAxis:"y",responsive:true,maintainAspectRatio:false,
+      animation:{duration:900,easing:"easeOutQuart",delay:function(c){return c.dataIndex*150;}},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,callbacks:{label:function(c){return c.raw.toLocaleString()+" displaced";}}}},
+      scales:{
+        x:{ticks:{color:tc,font:{size:10},callback:function(v){return (v/1000).toFixed(0)+"k";}},grid:{color:gc},border:{display:false}},
+        y:{ticks:{color:tc,font:{size:12,weight:"700"}},grid:{display:false},border:{display:false}}
+      }
+    }
+  });
+  setTimeout(function(){document.getElementById("mbar").style.width="100%";},200);
+})();
+</script>
+  <p class="source">Source: Diwan Al-Umran study</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>

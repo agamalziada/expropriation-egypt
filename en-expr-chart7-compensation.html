@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Total Compensation Paid for Forced Acquisitions (2021–2025)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{--blue:#378ADD;--coral:#D85A30;--teal:#1D9E75;--amber:#BA7517;--gray:#888780;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#2c2c2a;}
+  #root{padding:clamp(12px,3vw,20px);}
+  .hdr{border-left:3px solid #1D9E75;padding-left:10px;margin-bottom:10px;}
+  .tag{font-size:clamp(9px,2vw,10px);font-weight:700;letter-spacing:.07em;color:var(--gray);margin-bottom:2px;text-transform:uppercase;}
+  .title{font-size:clamp(13px,3.5vw,15px);font-weight:600;line-height:1.35;margin-bottom:2px;}
+  .subtitle{font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;}
+  .callout{background:#f1efe8;border-left:3px solid #1D9E75;padding:8px 11px;font-size:clamp(11px,2.5vw,12px);color:#5f5e5a;line-height:1.55;margin:9px 0;font-style:italic;}
+  .source{font-size:clamp(9px,2vw,10px);color:var(--gray);margin-top:10px;line-height:1.4;}
+  .cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .card{flex:1;min-width:min(100px,44%);border-radius:8px;padding:clamp(9px,2.5vw,12px) clamp(10px,3vw,13px);}
+  .cv{font-size:clamp(17px,5vw,24px);font-weight:800;line-height:1.1;}
+  .cl{font-size:clamp(9px,2.2vw,10px);margin-bottom:3px;line-height:1.3;}
+  .cu{font-size:clamp(9px,2vw,10px);margin-top:2px;}
+  @media(prefers-color-scheme:dark){
+    body{background:#1a1a18;color:#d3d1c7;}
+    .callout{background:#2c2c2a;color:#b4b2a9;}
+    .subtitle,.source{color:#b4b2a9;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="hdr">
+    <p class="tag">Zawia3 &middot; Chart 7 of 7</p>
+    <p class="title">Total Compensation Paid for Forced Acquisitions (2021–2025)</p>
+    <p class="subtitle">EGP billion — a large number that does not equal fair compensation</p>
+  </div>
+  <div class="callout">"EGP 55.2 billion paid in compensation — yet the data shows that the size of the figure does not mean fairness in distribution."</div>
+  
+<div style="text-align:center;background:#edf7f3;border-radius:10px;padding:clamp(12px,3.5vw,18px);margin-bottom:14px">
+  <p style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a;margin-bottom:4px">Total compensation disbursed (2021–2025)</p>
+  <div id="v" style="font-size:clamp(36px,10vw,50px);font-weight:800;color:#1D9E75;line-height:1">0</div>
+  <p style="font-size:clamp(13px,3.5vw,15px);font-weight:700;color:#1D9E75;margin-top:3px">EGP billion</p>
+</div>
+<div style="position:relative;width:100%;height:clamp(160px,42vw,185px)"><canvas id="c"></canvas></div>
+<div style="margin-top:10px;background:#f1efe8;border-radius:7px;padding:9px 12px">
+  <p style="font-size:clamp(10px,2.5vw,11px);color:#5f5e5a">Al-Mariotiya Axis project: initial compensation of only <strong style="color:#BA7517">EGP 950 million</strong> despite the vast acquisition</p>
+</div>
+<script>
+(function(){
+  var dk=matchMedia("(prefers-color-scheme:dark)").matches;
+  var tc=dk?"#b4b2a9":"#5f5e5a",gc=dk?"rgba(255,255,255,.08)":"rgba(0,0,0,.07)";
+  var teal=dk?"#5DCAA5":"#1D9E75",blue=dk?"#85B7EB":"#378ADD";
+  var s=null;
+  function cu(ts){if(!s)s=ts;var p=Math.min((ts-s)/900,1),e=1-Math.pow(1-p,3);document.getElementById("v").textContent=(e*55.2).toFixed(1);if(p<1)requestAnimationFrame(cu);else document.getElementById("v").textContent="55.2";}
+  setTimeout(function(){requestAnimationFrame(cu);},100);
+  new Chart(document.getElementById("c"),{
+    type:"bar",
+    data:{labels:[["Cross-governorate","projects"],["Local","projects"]],datasets:[{data:[20.07,35.13],backgroundColor:[blue,teal],borderWidth:0,borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:900,easing:"easeOutQuart",delay:function(c){return c.dataIndex*150;}},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:dk?"#2c2c2a":"#fff",borderColor:dk?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)",borderWidth:1,titleColor:dk?"#d3d1c7":"#2c2c2a",bodyColor:tc,padding:10,callbacks:{label:function(c){return "EGP "+c.raw+"B";}}}},
+    scales:{x:{ticks:{color:tc,font:{size:11}},grid:{display:false},border:{color:gc}},y:{ticks:{color:tc,font:{size:10},callback:function(v){return v+"B";}},grid:{color:gc},border:{display:false}}}}
+  });
+})();
+</script>
+  <p class="source">Source: Diwan Al-Umran study / 2023 seizure decree</p>
+</div>
+<script>
+(function(){
+  function notify(){var h=document.getElementById("root").offsetHeight;window.parent.postMessage({type:"chartResize",height:h},"*");}
+  setTimeout(notify,1400);window.addEventListener("resize",notify);
+  try{new ResizeObserver(function(){setTimeout(notify,80);}).observe(document.body);}catch(e){}
+})();
+</script>
+</body></html>
